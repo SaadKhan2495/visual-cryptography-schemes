@@ -10,8 +10,6 @@ arguments = parser.parse_args()
 
 dir_path=arguments.images_path
 
-print(dir_path)
-
 if not os.path.exists('output'):
     os.makedirs('output')
 
@@ -37,16 +35,16 @@ else:
     os.makedirs('output/2_out_of_2/combined')
 
 for image in os.listdir(dir_path):
-    if image.endswith(".png"):
+    if image.endswith(".jpg"):
         input_image = Image.open(dir_path+'/'+image).convert('L')
         #input_image = Image.open('a.png').convert('L')
         pixels = input_image.load()
         input_image_width = input_image.size[0]
         input_image_height = input_image.size[1]
 
-        print("Image Stats")
+        print("Image Stats: ",image)
         print("Width: %d" % input_image_width)
-        print("Height: %d" % input_image_height)
+        print("Height: %d\n" % input_image_height)
 
         #print("\nPrinting pixel values of original image\n")
         #for each_row_pixel in range(input_image_height):
@@ -124,8 +122,8 @@ for image in os.listdir(dir_path):
                         share_2_image_column_pixel+=1
                         share_2_image_pixels[share_2_image_column_pixel,each_row_pixel]=0
 
-        share_1_image.save('output/2_out_of_2/share_1/a_share_1.png')
-        share_2_image.save('output/2_out_of_2/share_2/a_share_2.png')
+        share_1_image.save('output/2_out_of_2/share_1/'+image+'_share_1.png')
+        share_2_image.save('output/2_out_of_2/share_2/'+image+'_share_2.png')
 
         #---------------Share Images Combined---------------
         share_images_combined = Image.new("L",(input_image_width * 2,input_image_height))
@@ -138,4 +136,6 @@ for image in os.listdir(dir_path):
                 else:
                     share_images_combined_pixels[each_column_pixel,each_row_pixel]= share_1_image_pixels[each_column_pixel,each_row_pixel]+share_2_image_pixels[each_column_pixel,each_row_pixel]
 
-        share_images_combined.save('output/2_out_of_2/combined/a_share_images_combined.png')
+        share_images_combined.save('output/2_out_of_2/combined/'+image+'_share_images_combined.png')
+
+print("Input Images divided into Shares.")

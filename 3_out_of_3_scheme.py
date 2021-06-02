@@ -10,8 +10,6 @@ arguments = parser.parse_args()
 
 dir_path=arguments.images_path
 
-print(dir_path)
-
 if not os.path.exists('output'):
     os.makedirs('output')
 
@@ -43,16 +41,16 @@ else:
     os.makedirs('output/3_out_of_3/combined')
 
 for image in os.listdir(dir_path):
-    if image.endswith(".png"):
+    if image.endswith(".jpg"):
         input_image = Image.open(dir_path+'/'+image).convert('L')
         #input_image = Image.open('a.png').convert('L')
         pixels = input_image.load()
         input_image_width = input_image.size[0]
         input_image_height = input_image.size[1]
 
-        print("Image Stats")
+        print("Image Stats: ",image)
         print("Width: %d" % input_image_width)
-        print("Height: %d" % input_image_height)
+        print("Height: %d\n" % input_image_height)
 
         #print("\nPrinting pixel values of original image\n")
         #for each_row_pixel in range(input_image_height):
@@ -2080,9 +2078,9 @@ for image in os.listdir(dir_path):
         
         
 
-        share_1_image.save('output/3_out_of_3/share_1/a_share_1.png')
-        share_2_image.save('output/3_out_of_3/share_2/a_share_2.png')
-        share_3_image.save('output/3_out_of_3/share_3/a_share_3.png')
+        share_1_image.save('output/3_out_of_3/share_1/'+image+'_share_1.png')
+        share_2_image.save('output/3_out_of_3/share_2/'+image+'_share_2.png')
+        share_3_image.save('output/3_out_of_3/share_3/'+image+'_share_3.png')
 
         #---------------Share Images Combined---------------
         share_images_combined = Image.new("L",(share_image_width,share_image_height))
@@ -2095,7 +2093,7 @@ for image in os.listdir(dir_path):
                 else:
                     share_images_combined_pixels[each_column_pixel,each_row_pixel]= share_1_image_pixels[each_column_pixel,each_row_pixel]+share_2_image_pixels[each_column_pixel,each_row_pixel]+share_3_image_pixels[each_column_pixel,each_row_pixel]
 
-        share_images_combined.save('output/3_out_of_3/combined/a_share_images_combined.png')
+        share_images_combined.save('output/3_out_of_3/combined/'+image+'_share_images_combined.png')
 
 
 
@@ -2177,3 +2175,5 @@ for image in os.listdir(dir_path):
         #share_1_image_column_pixel+=1
         #share_1_image_pixels[share_1_image_column_pixel,share_1_image_row_pixel]=0
         #share_1_image_row_pixel-=1
+
+print("Input Images divided into Shares.")
