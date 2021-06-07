@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>80e70b89-6c5f-4195-bb0e-c8c53fb79bb7</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>2_out_of_2_scheme.py</StartupFile>
+    <StartupFile>random_2_out_of_2_scheme.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,6 +26,12 @@
     </Compile>
     <Compile Include="2_out_of_2_scheme.py" />
     <Compile Include="png_to_jpg.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="random_2_out_of_2_scheme.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="random_3_out_of_3_scheme.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
