@@ -2088,7 +2088,7 @@ for image in os.listdir(dir_path):
 
         for each_row_pixel in range(share_image_height):
             for each_column_pixel in range(share_image_width):
-                if (share_1_image_pixels[each_column_pixel,each_row_pixel]+share_2_image_pixels[each_column_pixel,each_row_pixel]+share_3_image_pixels[each_column_pixel,each_row_pixel])==255:
+                if ((share_1_image_pixels[each_column_pixel,each_row_pixel]==0 or share_2_image_pixels[each_column_pixel,each_row_pixel]==0 or share_3_image_pixels[each_column_pixel,each_row_pixel]==0)):
                     share_images_combined_pixels[each_column_pixel,each_row_pixel]= 0
                 else:
                     share_images_combined_pixels[each_column_pixel,each_row_pixel]= share_1_image_pixels[each_column_pixel,each_row_pixel]+share_2_image_pixels[each_column_pixel,each_row_pixel]+share_3_image_pixels[each_column_pixel,each_row_pixel]
